@@ -36,20 +36,15 @@ public class words {
         System.out.println("\n");
         String current = array[0];
         int count = 0;
-        while (count != 3){
+        while (count != N-1){
+            count = 0;
             for (int i = 1; i<N; i++){
-                if (currentSize+1 == K){
-                    System.out.println(array[0]+" ");
-                    for (int j = 0; j<K-1; j++){
-                        System.out.println(out[j]);
-                    }
-                    return;
-                }
+
                 if(isEqual(current, array[i])){
                     out[currentSize] = array[i];
                     current = array[i];
                     currentSize++;
-                    count = 4;
+                    count = N-1;
                 }else{
                     count ++;
                 }
@@ -59,6 +54,11 @@ public class words {
         System.out.println("OUTPUT::::=====");
         if (currentSize+1 < K){
             System.out.println("IMPOSSIBLE");
+        }else{
+            System.out.println(array[0]+" ");
+            for (int j = 0; j<K-1; j++){
+                System.out.println(out[j]);
+            }
         }
     }
 
