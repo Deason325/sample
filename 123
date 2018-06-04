@@ -1,1 +1,66 @@
-123213
+/**
+ * Created by Nan on 2018-06-03.
+ */
+import java.util.*;
+public class words {
+
+    static public boolean isEqual(String a, String b){
+        if (a.charAt(a.length()-1) == b.charAt(0)){
+            return true;
+        }
+        return false;
+    }
+
+
+    public static void main(String[]args) {
+        Scanner in = new Scanner(System.in);
+        int N = in.nextInt();
+
+        String[] array = new String[N];
+        int K = 0;
+        int currentSize = 0;
+
+        for (int i = 0; i < N; i++) {
+            array[i] = in.next();
+        }
+        K = in.nextInt();
+        String [] out = new String[K];
+
+        System.out.print(N + " ");
+        for (int i = 0; i < N; i++) {
+            System.out.print(array[i] + " ");
+        }
+        System.out.print(K + " ");
+
+
+        System.out.println("\n");
+        String current = array[0];
+        int count = 0;
+        while (count != 3){
+            for (int i = 1; i<N; i++){
+                if (currentSize+1 == K){
+                    System.out.println(array[0]+" ");
+                    for (int j = 0; j<K-1; j++){
+                        System.out.println(out[j]);
+                    }
+                    return;
+                }
+                if(isEqual(current, array[i])){
+                    out[currentSize] = array[i];
+                    current = array[i];
+                    currentSize++;
+                    count = 4;
+                }else{
+                    count ++;
+                }
+            }
+        }
+
+        System.out.println("OUTPUT::::=====");
+        if (currentSize+1 < K){
+            System.out.println("IMPOSSIBLE");
+        }
+    }
+
+
+    }
